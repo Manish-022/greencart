@@ -13,7 +13,12 @@ services:
     environment:
       MONGO_URI: mongodb://mongo:27017/greencart
 
-  frontend:
-    build: ./client
-    ports:
-      - "5173:5173"
+frontend:
+  build: ./client
+  ports:
+    - "5173:5173"
+  volumes:
+    - ./client:/app
+    - /app/node_modules
+  command: npm run dev
+
